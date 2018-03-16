@@ -1,6 +1,6 @@
 node {
   stage('SCM') {
-    git 'https://github.com/dhiraj4191/sample-sonar-repo.git'
+    git '${GIT_URL}'
   }
   stage('SonarQube analysis') {
     def scannerHome = tool 'SonarQube Scanner 2.8';
