@@ -1,0 +1,11 @@
+node {
+  stage('SCM') {
+    git 'https://github.com/dhiraj4191/sample-sonar-repo.git'
+  }
+  stage('SonarQube analysis') {
+    def scannerHome = tool 'SonarQube Scanner 2.8';
+    withSonarQubeEnv('sonar-server') {
+      sh "${scannerHome}/bin/sonar-scanner"
+    }
+  }
+}
